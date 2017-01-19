@@ -11,14 +11,15 @@
 
 1. Fork the project
 2. Clone your Fork with git clone git@github.com:username/braceletus.git
-3. You are now ready to code!
+3. Add a remote to original repo with git remote add upstream git@github.com:AustinDidierTran/braceletus.git
+4. You are now ready to code!
 
 ## Development flow
 
 1. Make your modifications
 2. Stage your files with git add .
 3. Create your commit with git commit -m "Commit message"
-4. Fetch the last changes with git pull <remote> <branch>
+4. Fetch the last changes with git pull upstream 'branch'
 5. Solve conflicts if necessary
-6. Push your changes with git push <remote> <branch>
+6. Push your changes with git push 'remote' 'branch'
 7. Generate a Pull Request on github.com
