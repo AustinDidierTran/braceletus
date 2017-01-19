@@ -19,7 +19,8 @@
 1. Make your modifications
 2. Stage your files with git add .
 3. Create your commit with git commit -m "Commit message"
-4. Fetch the last changes with git pull upstream 'branch'
-5. Solve conflicts if necessary
-6. Push your changes with git push 'remote' 'branch'
-7. Generate a Pull Request on github.com
+4. Update your upstream with git fetch upstream
+5. Fetch the last changes with git pull upstream 'branch'
+6. Solve conflicts if necessary
+7. Push your changes with git push 'remote' 'branch'
+8. Generate a Pull Request on github.com
