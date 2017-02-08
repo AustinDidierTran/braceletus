@@ -1,4 +1,4 @@
-angular.module('PatientConditionCtrl', []).controller('PatientConditionController', function($scope) {
+angular.module('PatientsListCtrl', []).controller('PatientsListController', function($scope) {
 
 	// Données temporaires pour le front end
 	$scope.title = 'État des patients';

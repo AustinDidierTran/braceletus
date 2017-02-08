@@ -1,5 +1,6 @@
 angular.module('braceletusApp', [
     'ngRoute',
     'appRoutes',
-    'PatientConditionCtrl'
+    'PatientInformationCtrl',
+    'PatientsListCtrl'
 ]);
