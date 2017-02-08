@@ -1,5 +1,9 @@
 # braceletus
 
+## Reference Links
+
+* One Drive: https://1drv.ms/f/s!AojJeyhfJsx_gZoyI18SXwCGGfyLeg
+
 ## Setup your SSH key
 
 1. Verify if you have an SSH key setup with cat ~/.ssh/id_rsa
