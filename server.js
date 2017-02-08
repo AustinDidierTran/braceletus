@@ -1,14 +1,11 @@
 var express = require('express');
 var app = express();
-
 const port = process.env.PORT || 3000;
 
-// viewed at http://localhost:8080
+app.use(express.static(__dirname + '/public'));
 
-app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/index.html');
-});
+require('./app/routes')(app); // pass our application into our routes
 
+// viewed at http://localhost:
 app.listen(port);
-
 console.log(`Listening on port ${port}`);
