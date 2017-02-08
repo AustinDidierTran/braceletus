@@ -2,7 +2,7 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider',
     function($routeProvider, $locationProvider) {
         $routeProvider
 
-            .when('/état-patients', {
+    		.when('/état-patients', {
     			templateUrl: 'views/patients-condition.html',
     			controller: 'PatientConditionController'
     		})
