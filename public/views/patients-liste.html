@@ -1,17 +1,20 @@
 <!-- Interface to be redesigned -->
 
 <h1 class='page-header'>{{title}}</h1>
-<table>
+<table datatable="" class="row-border hover">
+  <thead>
     <th>
-        <td>Nom</td>
-        <td>Prénom</td>
-        <td>Age</td>
-        <td>État</td>
-    <th>
-    <tr ng-repeat="patient in patients">
-        <td>{{patient.firstName}}</td>
-        <td>{{patient.lastName}}</td>
-        <td>{{patient.age}}</td>
-        <td>{{patient.condition}}</td>
+      <td>Nom</td>
+      <td>Prénom</td>
+      <td>Age</td>
+      <td>État</td>
+    </th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="patient in patients"><td>{{patient.firstName}}</td>
+      <td>{{patient.lastName}}</td>
+      <td>{{patient.age}}</td>
+      <td>{{patient.condition}}</td>
     </tr>
+  </tbody>
 </table>
