@@ -11,7 +11,13 @@
     "type": "git",
     "url": "git+https://github.com/AustinDidierTran/braceletus.git"
   },
-  "author": "",
+  "author": [
+    "Austin-Didier Tran"
+    "Benjamin Roy",
+    "Joey Dionne",
+    "Marc-Antoine Beaudoin",
+    "Olivier Bellavance"
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/AustinDidierTran/braceletus/issues"

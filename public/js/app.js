@@ -12,6 +12,7 @@ firebase.initializeApp(config);
 angular.module('braceletusApp', [
     'ngRoute',
     'appRoutes',
+    'datatables',
     'PatientInformationCtrl',
     'PatientsListCtrl'
 ]);

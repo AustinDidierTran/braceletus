@@ -3,6 +3,7 @@
 ## Reference Links
 
 * One Drive: https://1drv.ms/f/s!AojJeyhfJsx_gZoyI18SXwCGGfyLeg
+* angular-datatables: https://l-lin.github.io/angular-datatables/archives/#/welcome
 
 ## Setup your SSH key
 
