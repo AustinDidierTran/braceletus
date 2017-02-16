@@ -1,11 +1,10 @@
-var express = require('express');
-var app = express();
-const port = process.env.PORT || 3000;
+const express = require('express');
+const app = express();
+const conf = require('./server/conf');
 
-app.use(express.static(__dirname + '/public'));
-
-require('./app/routes')(app); // pass our application into our routes
+require('./app/routes')(app, express); // pass our application into our routes
+require('./server/websockets')(); // initializes websockets
 
 // viewed at http://localhost:
-app.listen(port);
-console.log(`Listening on port ${port}`);
+app.listen(conf.port);
+console.log(`Listening on port ${conf.port}`);
