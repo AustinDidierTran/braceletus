@@ -61,10 +61,19 @@
   <body ng-app='braceletusApp'>
     <div class="container">
       <!-- Common navbar -->
-      <div class="navbar">
-
-      </div>
-
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#"><img src="/img/" alt="Mountain View" style="width:304px;height:228px;"></a>
+          </div>
+          <form class="navbar-form navbar-right">
+            <div class="form-group">
+             	{{userName}}
+            </div>
+            <button type="button" class="btn btn-default navbar-btn">Sign in</button>
+          </form>
+        </div>
+      </nav>
 
       <!-- Angular dynamic content -->
       <div ng-view></div>
