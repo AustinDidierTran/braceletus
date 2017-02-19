@@ -1,1 +1,24 @@
 /* Contains styles that are applied everywhere in the app */
+
+/*** Login ***/
+.login {
+  width: 400px;
+  height:340px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.login-btn {
+  width:100%;
+}
+.login-footer {
+  border-top: 1px solid#888;
+  padding-top:15px;
+  cursor: pointer;
+}
+.login-img {
+  margin-top:-35px;
+}

@@ -14,6 +14,7 @@ angular.module('braceletusApp', [
     'appRoutes',
     'datatables',
     'datatables.bootstrap',
+    'LoginCtrl',
     'PatientInformationCtrl',
     'PatientsListCtrl'
 ]).run(function(DTDefaultOptions) {
