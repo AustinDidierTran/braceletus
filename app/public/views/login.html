@@ -1,0 +1,24 @@
+<form class="jumbotron login" role="form">
+
+  <img class='img-responsive center-block login-img' src="../img/logo300x109.png"/>
+
+  <div class="form-group input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+    <input type="text" class="form-control" value="" placeholder="Identifiant" ng-model='username'>
+  </div>
+
+  <div class="form-group input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+    <input type="password" class="form-control" placeholder="Mot de passe" ng-model='password'>
+  </div>
+
+  <div class="form-group">
+    <a href="#" class="btn btn-success login-btn" ng-click='connect()'>Connexion</a>
+  </div>
+
+  <div class="form-group login-footer text-center">
+    <a ng-click='forgotPassword()'>Mot de passe oublié</a> ou
+    <a ng-click='register()'>s'enregistrer</a>
+  </div>
+
+</form>
