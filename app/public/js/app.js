@@ -13,7 +13,6 @@ angular.module('braceletusApp', [
     'ngRoute',
     'appRoutes',
     'datatables',
-    'datatables.bootstrap',
     'LoginCtrl',
     'PatientInformationCtrl',
     'PatientsListCtrl'
