@@ -14,6 +14,8 @@ angular.module('braceletusApp', [
     'appRoutes',
     'datatables',
     'datatables.bootstrap',
+    'firebase',
+    'FirebaseService',
     'LoginCtrl',
     'PatientInformationCtrl',
     'PatientsListCtrl'
