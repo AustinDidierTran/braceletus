@@ -54,12 +54,13 @@
   </head>
   <body ng-app='braceletusApp'>
 
-    <!--div class="container"-->
     <!-- Common navbar -->
     <div ng-include="'/views/partials/navbar.html'"></div>
 
     <!-- Angular dynamic content -->
-    <div ng-view></div>
+    <div class="container">
+      <div ng-view></div>
+    </div>
 
     <!-- Common footer -->
     <div ng-include="'/views/partials/footer.html'"></div>
