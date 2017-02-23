@@ -1,4 +1,4 @@
-angular.module('FirebaseService', []).service('firebaseService', function($rootScope) {
+angular.module('FirebaseService', []).service('firebaseService', function() {
 
   this.resetPassword = function(email) {
     return firebase.auth().sendPasswordResetEmail(email);
