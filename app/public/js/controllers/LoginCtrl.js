@@ -25,5 +25,5 @@ app.controller('LoginController', function($location, $rootScope, $scope, $timeo
   }
 
   $scope.signUp = function() {}
-  
+
 });
