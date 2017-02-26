@@ -5,6 +5,12 @@ app.controller('LoginController', function($location, $rootScope, $scope, $timeo
   // TODO: Replace alerts by ui-bootstrap-alerts: https://angular-ui.github.io/bootstrap/
   $scope.user = { email: '', password: '' };
 
+  $scope.myFunct = function(keyEvent) {
+    if (keyEvent.which === 13) {
+      $scope.signIn();
+    }
+  }
+
   $scope.resetPassword = function() {
     firebaseService.resetPassword($scope.user.email).then(function() {
       alert('Un courriel de réinitialisation du mot de passe a été envoyé à l\'addresse ' + $scope.user.email);
@@ -25,5 +31,5 @@ app.controller('LoginController', function($location, $rootScope, $scope, $timeo
   }
 
   $scope.signUp = function() {}
-  
+
 });
