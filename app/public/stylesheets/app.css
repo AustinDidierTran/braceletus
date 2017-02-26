@@ -55,6 +55,14 @@
   float:right;
 }
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.container {
+  padding-bottom: 50px;
+}
 /* Footer */
 
 .footer {
