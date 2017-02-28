@@ -30,6 +30,14 @@ app.config(['$locationProvider', '$routeProvider',
         }]
       }
     })
+    .when('/error', {
+      templateUrl: 'views/error404.html',
+      controller: 'PatientInformationController'
+    })
+    .when('/patientForm', {
+      templateUrl: 'views/patient-form.html',
+      controller: 'PatientInformationController'
+    })
     .otherwise({redirectTo:'/login'});
 
     $locationProvider.html5Mode(true);
