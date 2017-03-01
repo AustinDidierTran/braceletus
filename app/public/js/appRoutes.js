@@ -14,6 +14,10 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider',
           templateUrl: 'views/patient-information.html',
           controller: 'PatientInformationController'
         })
+        .when('/utilisateurs', {
+          templateUrl: 'views/users-list.html',
+          controller: 'UsersListController'
+        })
         .otherwise({redirectTo:'/login'});
 
         $locationProvider.html5Mode(true);

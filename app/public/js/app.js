@@ -18,7 +18,8 @@ angular.module('braceletusApp', [
     'FirebaseService',
     'LoginCtrl',
     'PatientInformationCtrl',
-    'PatientsListCtrl'
+    'PatientsListCtrl',
+    'UsersListCtrl'
 ]).run(function(DTDefaultOptions) {
   DTDefaultOptions.setLanguage({
     sUrl: 'https://cdn.datatables.net/plug-ins/1.10.13/i18n/French.json' // Set the default language for all datatables.
