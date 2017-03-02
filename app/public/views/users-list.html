@@ -1,0 +1,39 @@
+<h1 class="page-header">{{title}}</h1>
+
+<div class='form-group'>
+  <button type='button' class='btn btn-success' ng-click='addUser()'>
+    <i class="fa fa-plus-circle" aria-hidden="true"></i> Ajouter un utilisateur
+  </button>
+</div>
+
+<table width='100%' datatable="ng" dt-options="dtOptions" dt-instance="dtInstance" dt-column-defs="dtColumnDefs" class="row-border hover">
+  <thead>
+    <tr>
+      <th>Photo</th>
+      <th>Courriel</th>
+      <th>Prénom</th>
+      <th>Nom</th>
+      <th>Type</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="user in users | orderBy:'type'">
+      <td>
+        <img class="img-responsive user-img" src="{{user.picture}}" />
+      </td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.firstName }}</td>
+      <td>{{ user.lastName }}</td>
+      <td>{{ user.type }}</td>
+      <td>
+        <button class="btn btn-warning" ng-click="editUser(user)">
+          <i class="fa fa-edit"></i>
+        </button>
+        <button class="btn btn-danger" ng-click="deleteUser(user)">
+          <i class="fa fa-trash-o"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
