@@ -5,7 +5,7 @@ app.controller('UsersListController',
 
     // TODO: Fetch users data from firebase:
 
-  	$scope.title = 'Liste des utilisateurs';
+    $scope.title = 'Liste des utilisateurs';
     $scope.types = [ 'Administrateur', 'Utilisateur' ];
     $scope.users = [
       {
