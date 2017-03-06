@@ -44,11 +44,13 @@
 
     <!-- Angular Controllers -->
     <script src="js/controllers/LoginCtrl.js"></script>
+    <script src="js/controllers/NavbarCtrl.js"></script>
     <script src="js/controllers/PatientsListCtrl.js"></script>
     <script src="js/controllers/PatientInformationCtrl.js"></script>
     <script src="js/controllers/UsersListCtrl.js"></script>
 
     <!-- Angular Services -->
+    <script src="js/services/authentificationService.js"></script>
     <script src="js/services/firebaseService.js"></script>
 
     <!-- Angular Custom -->
@@ -58,7 +60,7 @@
   <body ng-app='braceletusApp'>
 
     <!-- Common navbar -->
-    <div ng-include="'/views/partials/navbar.html'"></div>
+    <div ng-if="user !== null" ng-include="'/views/partials/navbar.html'" ng-controller="NavbarController"></div>
 
     <!-- Angular dynamic content -->
     <div class="container">
@@ -66,7 +68,7 @@
     </div>
 
     <!-- Common footer -->
-    <div ng-include="'/views/partials/footer.html'"></div>
+    <div ng-if="user !== null" ng-include="'/views/partials/footer.html'"></div>
 
   </body>
 </html>

@@ -1,5 +1,10 @@
 angular.module('FirebaseService', []).service('firebaseService', function($rootScope) {
 
+  this.setUserPassword = function(newPassword) {
+    var user = firebase.auth().currentUser; // The user is using Firebase
+    return user.updatePassword(newPassword);
+  }
+
   this.resetPassword = function(email) {
     return firebase.auth().sendPasswordResetEmail(email);
   }
