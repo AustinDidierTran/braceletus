@@ -5,8 +5,8 @@ function($compile, $location, $scope, DTOptionsBuilder, DTColumnBuilder) {
 	$scope.dtInstance = {};
 	$scope.dtOptions = DTOptionsBuilder.newOptions()
 		.withOption('data', [
-			{id: 1, picture: null, firstName: 'Roy', lastName: 'Benjamin', age: 78, sex: 'Homme', isStable: true},
-			{id: 2, picture: null, firstName: 'Tran', lastName: 'Austin-Didier', age: 78, sex: 'Femme', isStable: false},
+			{id: 1, picture: null, firstName: 'Roy', lastName: 'Benjamin', age: 78, sex: 'Femme', isStable: true},
+			{id: 2, picture: null, firstName: 'Tran', lastName: 'Austin-Didier', age: 78, sex: 'Homme', isStable: false},
 		])
 		.withPaginationType('full_numbers')
 		.withOption('rowCallback', rowCallback)
