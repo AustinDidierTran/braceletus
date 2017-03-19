@@ -3,7 +3,7 @@ var app = angular.module('appRoutes', ['firebase']);
 app.config(['$locationProvider', '$routeProvider',
   function($locationProvider, $routeProvider) {
     $routeProvider
-    .when('/login', {
+    .when('/connexion', {
       templateUrl: 'views/login.html',
       controller: 'LoginController',
       resolve: {
@@ -39,6 +39,16 @@ app.config(['$locationProvider', '$routeProvider',
       controller: 'PatientInformationController'
     })
     .otherwise({redirectTo:'/login'});
+    .when('/utilisateurs', {
+      templateUrl: 'views/users-list.html',
+      controller: 'UsersListController',
+      resolve: {
+        firebaseUser: ["Auth", function(Auth) {
+          return Auth.$waitForSignIn();
+        }]
+      }
+    })
+    .otherwise({redirectTo:'/connexion'});
 
     $locationProvider.html5Mode(true);
   }
@@ -49,12 +59,12 @@ app.run(['$location', '$rootScope', function($location, $rootScope) {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       $rootScope.user = user;
-      if ($location.path() === '/login') {
+      if ($location.path() === '/connextion') {
         $location.path('/patients');
       }
     } else {
       $rootScope.user = null;
-      $location.path('/login');
+      $location.path('/connexion');
     }
   });
 }]);
