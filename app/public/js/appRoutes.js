@@ -38,7 +38,6 @@ app.config(['$locationProvider', '$routeProvider',
       templateUrl: 'views/patient-form.html',
       controller: 'PatientInformationController'
     })
-    .otherwise({redirectTo:'/login'});
     .when('/utilisateurs', {
       templateUrl: 'views/users-list.html',
       controller: 'UsersListController',
