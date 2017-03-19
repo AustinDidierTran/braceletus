@@ -55,6 +55,14 @@
   float:right;
 }
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.container {
+  padding-bottom: 50px;
+}
 /* Footer */
 
 .footer {
@@ -65,4 +73,24 @@
   line-height: 20px;
   display: block;
   background-image: linear-gradient(#54b4eb, #2fa4e7 60%, #1d9ce5);
+}
+
+#footerText {
+  margin-left: 20px;
+}
+
+/* Error 404 */
+
+.error {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Dossier du patient */
+
+.panel-footer {
+  height: 50px;
 }
