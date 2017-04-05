@@ -58,7 +58,7 @@ app.run(['$location', '$rootScope', function($location, $rootScope) {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       $rootScope.user = user;
-      if ($location.path() === '/connextion') {
+      if ($location.path() === '/connexion') {
         $location.path('/patients');
       }
     } else {
