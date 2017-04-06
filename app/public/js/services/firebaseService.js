@@ -1,8 +1,26 @@
-angular.module('FirebaseService', []).service('firebaseService', function($firebaseArray) {
+angular.module('FirebaseService', []).service('firebaseService', function($firebaseArray, $firebaseObject) {
 
   this.getAll = function(key) {
     var ref = firebase.database().ref().child(key);
     return $firebaseArray(ref);
+  }
+
+  this.save = (key, obj, _callback) => {
+    const ref = firebase.database().ref(key);
+
+    const object = $firebaseObject(ref);
+
+    object.$loaded().then(function(o1) {
+      for(let i in obj) {
+        object[i] = obj[i];
+      }
+
+      object.$save().then(function(o2) {
+        if(callback) {
+          _callback(o2);
+        }
+      })
+    })
   }
 
   this.getImageFullPath = function(key) {
