@@ -4,7 +4,7 @@
       <H3>Informations sur le patient</H3>
       <div class="panel panel-info">
         <div class="panel-heading">
-          <h3 class="panel-title"><td>{{patient.firstName}}</td><td>{{patient.lastName}}</td></h3>
+          <h3 class="panel-title"><td>{{patient.firstName}}</td> <td>{{patient.lastName}}</td></h3>
         </div>
         <div class="panel-body">
           <div class="row">
@@ -13,12 +13,16 @@
               <table class="table">
                 <tbody>
                   <tr>
+                    <td>RFID:</td>
+                    <td><input type="text" ng-model="patient.rfid" /></td>
+                  </tr>
+                  <tr>
                     <td>État:</td>
                     <td>{{patient.condition}}</td>
                   </tr>
                   <tr>
                     <td>Localisation:</td>
-                    <td>{{patient.localisation}}</td>
+                    <td><input type="text" ng-model="patient.localisation" /></td>
                   </tr>
                   <tr>
                     <td>ID:</td>
@@ -26,39 +30,39 @@
                   </tr>
                   <tr>
                     <td>Date de naissance (Âge: {{patient.age}}):</td>
-                    <td>{{patient.birthDate}}</td>
+                    <td><input type="text" ng-model="patient.birthDate" /></td>
                   </tr>
                   <tr>
                     <td>Adresse:</td>
-                    <td>{{patient.address}}</td>
+                    <td><input type="text" ng-model="patient.address" /></td>
                   </tr>
                   <tr>
                     <td>Numéro de téléphone:</td>
-                    <td>{{patient.phoneNumber}}</td>
+                    <td><input type="text" ng-model="patient.phoneNumber" /></td>
                   </tr>
                   <tr>
                     <td>Raison de l'hospitalisation:</td>
-                    <td>{{patient.reasonHospitalization}}</td>
+                    <td><input type="text" ng-model="patient.reasonHospitalization" /></td>
                   </tr>
                   <tr>
                     <td>Allergie:</td>
-                    <td>{{patient.allergy}}</td>
+                    <td><input type="text" ng-model="patient.allergy" /></td>
                   </tr>
                   <tr>
                     <td>Médicamentation:</td>
-                    <td>{{patient.medication}}</td>
+                    <td><input type="text" ng-model="patient.medication" /></td>
                   </tr>
                   <tr>
                     <td>Alimentation:</td>
-                    <td>{{patient.food}}</td>
+                    <td><input type="text" ng-model="patient.food" /></td>
                   </tr>
                   <tr>
                     <td>Autonomie:</td>
-                    <td>{{patient.autonomy}}</td>
+                    <td><input type="text" ng-model="patient.autonomy" /></td>
                   </tr>
                   <tr>
                     <td>Autre:</td>
-                    <td>{{patient.other}}</td>
+                    <td><input type="text" ng-model="patient.other" /></td>
                   </tr>
                 </tbody>
               </table>
@@ -67,7 +71,7 @@
         </div>
         <div class="panel-footer">
           <span class="pull-right">
-            <a href="" data-original-title="Modifier cet utilisateur" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning">Modifer <i class="glyphicon glyphicon-edit"></i></a>
+            <a href="" data-original-title="Modifier cet utilisateur" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" ng-click="savePatient()">Sauvegarder <i class="glyphicon glyphicon-save"></i></a>
             <a data-original-title="Supprimer cet utilisateur" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger">Archiver <i class="glyphicon glyphicon-remove"></i></a>
           </span>
         </div>

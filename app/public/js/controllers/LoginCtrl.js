@@ -11,6 +11,8 @@ app.controller('LoginController', function($location, $rootScope, $scope, $timeo
     }
   }
 
+  $scope.isSignIn = true;
+
   $scope.resetPassword = function() {
     firebaseService.resetPassword($scope.user.email).then(function() {
       alert('Un courriel de réinitialisation du mot de passe a été envoyé à l\'addresse ' + $scope.user.email);
@@ -30,6 +32,19 @@ app.controller('LoginController', function($location, $rootScope, $scope, $timeo
     });
   }
 
-  $scope.signUp = function() {}
+  $scope.setIsSignIn = function(state) {
+    $scope.isSignIn = state;
+  }
+
+  $scope.signUp = function() {
+    firebaseService.signUp($scope.user.email, $scope.user.password).then(function(user) {
+      $rootScope.user = user; // TODO: Store the user in cache?
+      $location.path('/patients');
+      $scope.$apply();
+    }).catch(function(error) {
+      console.log(error.code + ': ' + error.message);
+      alert('Le nom d\'utilisateur ou le mot de passe est incorrect');
+    });
+  }
 
 });
