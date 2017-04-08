@@ -21,7 +21,9 @@ app.controller('PatientsListController',
 			DTColumnDefBuilder.newColumnDef(6).notSortable() // Condition
 	  ];
 
-		$scope.addPatient = function() { console.log('Add patient'); }
+		$scope.addPatient = function() {
+			$location.path('/nouveau-patient');
+		}
 
 		function rowCallback(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
 			// Unbind first in order to avoid any duplicate handler

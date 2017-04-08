@@ -1,0 +1,89 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xs-offset-0 col-sm-offset-0 col-md-offset-2 col-lg-offset-2">
+      <h3>{{title}}</h3>
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title"></h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-3 col-lg-3" align="center"> <img alt="User Pic" src="\img\male-picture.png" class="img-circle img-responsive"></div>
+            <div class="col-md-9 col-lg-9">
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td>Identificant du bracelet</td>
+                    <td><input type="text" class="form-control" value="" placeholder="Identifiant unique" ng-model='patient.rfid'></td>
+                  </tr>
+                  <tr>
+                    <td>Identifiant du patient:</td>
+                    <td><input type="number" class="form-control" value="" placeholder="Identifiant unique" ng-model='patientId' readonly></td>
+                  </tr>
+                  <tr>
+                    <td>* Nom:</td>
+                    <td><input type="text" class="form-control" value="" placeholder="Nom" ng-model='patient.lastName' required></td>
+                  </tr>
+                  <tr>
+                    <td>* Prénom:</td>
+                    <td><input type="text" class="form-control" value="" placeholder="Prénom" ng-model='patient.firstName' required></td>
+                  </tr>
+                  <tr>
+                    <td>* Sexe</td>
+                    <td>
+                      <select class='form-control' ng-options="s for s in sexTypes" ng-model="patient.sex"></select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>* Date de naissance</td>
+                    <td><input type="text" class="form-control" value="" placeholder="jj/mm/aaaa" ng-model='patient.birthdate' required></td>
+                  </tr>
+                  <tr>
+                    <td>* Adresse:</td>
+                    <td><input type="text" class="form-control" value="" placeholder="Adresse" ng-model='patient.address' required></td>
+                  </tr>
+                  <tr>
+                    <td>* Numéro de téléphone:</td>
+                    <td><input type="tel" class="form-control" value="" placeholder="123-456-7890" ng-model='patient.phoneNumber' required></td>
+                  </tr>
+                  <tr>
+                    <td>Raison de l'hospitalisation:</td>
+                    <td><input type="text" class="form-control" value="" placeholder="Raison de l'hospitalisation" ng-model='patient.hospitalizationReason' required></td>
+                  </tr>
+                  <tr>
+                    <td>Allergie:</td>
+                    <td><textarea class="form-control" rows="4" cols="50" placeholder="Allergie" ng-model='patient.allergy' required></textarea></td>
+                  </tr>
+                  <tr>
+                    <td>Médicamentation:</td>
+                    <td><textarea class="form-control" rows="4" cols="50" placeholder="Médicamentation" ng-model='patient.medication'></textarea></td>
+                  </tr>
+                  <tr>
+                    <td>Alimentation:</td>
+                    <td><textarea class="form-control" rows="4" cols="50" placeholder="Alimentation" ng-model='patient.alimentation' required></textarea></td>
+                  </tr>
+                  <tr>
+                    <td>Autonomie:</td>
+                    <td>
+                      <select class='form-control' ng-options="t for t in autonomyTypes" ng-model="patient.autonomy"></select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Autre(s):</td>
+                    <td><textarea class="form-control" rows="4" cols="50" placeholder="Autre(s)" ng-model='patient.others'></textarea></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer">
+          <span class="pull-right">
+            <button type='button' class='btn btn-sm btn-success' ng-click='addNewPatient()'><i class="fa fa-edit" aria-hidden="true"></i> Enregister</button>
+            <button type='button' class='btn btn-sm btn-danger' ng-click='cancel()'><i class="fa fa-remove" aria-hidden="true"></i> Annuler</button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
