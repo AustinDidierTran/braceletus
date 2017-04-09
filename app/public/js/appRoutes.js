@@ -46,6 +46,10 @@ app.config(['$locationProvider', '$routeProvider',
         }]
       }
     })
+    .when('/options', {
+      templateUrl: 'views/password-mgmt.html',
+      controller: 'OptionsController'
+    })
     .when('/utilisateurs', {
       templateUrl: 'views/users-list.html',
       controller: 'UsersListController',

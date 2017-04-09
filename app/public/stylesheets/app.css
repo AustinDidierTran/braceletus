@@ -79,8 +79,7 @@ html {
   margin-left: 20px;
 }
 
-/* Error 404 */
-
+/*** Error 404 ***/
 .error {
   text-align: left;
   display: flex;
@@ -89,8 +88,19 @@ html {
   align-items: center;
 }
 
-/*** Patient Infos ***/
+/*** Options ***/
+.options {
+  width: 400px;
+  height:290px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
 
+/*** Patient Infos ***/
 .patient-img {
   width: 100px;
   height:100px;

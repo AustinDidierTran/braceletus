@@ -21,6 +21,7 @@ angular.module('braceletusApp', [
     'AddPatientCtrl',
     'LoginCtrl',
     'NavbarCtrl',
+    'OptionsCtrl',
     'PatientInformationCtrl',
     'PatientsListCtrl',
     'UsersListCtrl',
