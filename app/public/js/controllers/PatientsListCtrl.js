@@ -1,7 +1,7 @@
 var app = angular.module('PatientsListCtrl', []);
 
 app.controller('PatientsListController',
-	function($location, $scope, DTOptionsBuilder, DTColumnDefBuilder, firebaseService) {
+	function($location, $scope, DTOptionsBuilder, DTColumnDefBuilder, firebaseService, patientsListFilter) {
 
 		$scope.title = 'État des patients';
 		$scope.patients = firebaseService.getAll('patients');
