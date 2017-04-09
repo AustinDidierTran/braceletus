@@ -24,9 +24,9 @@
 
 /*** Users ***/
 .user-img {
-  width: 90px;
-  height:90px;
-  overflow: hidder;
+  width: 70px;
+  height:70px;
+  overflow: hidden;
 }
 
 /* NavBar */
@@ -89,7 +89,13 @@ html {
   align-items: center;
 }
 
-/* Dossier du patient */
+/*** Patient Infos ***/
+
+.patient-img {
+  width: 100px;
+  height:100px;
+  overflow: hidden;
+}
 
 .panel-footer {
   height: 50px;

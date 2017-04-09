@@ -19,7 +19,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="patient in patients | orderBy:'isStable'" ng-style="!patient.isStable ? {'background-color':'#FFCDD2'} : {}">
+    <tr ng-repeat="patient in patients | orderBy:'isStable'"
+        ng-style="patient.isStable == '00' && {'background-color':'#FFCDD2'} || patient.isStable == '01' && {'background-color':'#ccffcc'} || patient.isStable == '11' && {'text-decoration': 'line-through'}">
       <td>{{ patient.$id }}</td>
       <td>
         <div ng-show="!patient.picture && patient.sex==='Homme'">
@@ -29,7 +30,7 @@
           <img src='../../img/female-picture.png' />
         </div>
         <div ng-show="patient.picture">
-          <img src='{{patient.picture}}' />
+          <img class="img-responsive user-img" src="{{patient.picture}}" />
         </div>
       </td>
       <td>{{ patient.firstName }}</td>

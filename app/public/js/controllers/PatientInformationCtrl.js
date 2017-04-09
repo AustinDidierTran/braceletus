@@ -1,21 +1,39 @@
-angular.module('PatientInformationCtrl', []).controller('PatientInformationController', function($scope, $route, firebaseService) {
+angular.module('PatientInformationCtrl', []).controller('PatientInformationController',
+	function($location, $scope, $route, patientInfos, firebaseService) {
 
-	// Temporary data for the front-end
-	$scope.title = 'État des patients';
+		$scope.title = 'Informations sur le patient';
+		$scope.patient = patientInfos;
+		$scope.autonomyTypes = ['Autonome', 'Semi-autonome', 'Non autonome'];
+		$scope.sexTypes = ['Homme', 'Femme'];
 
-  // The user should be retrieved with the id from firebase
-	$scope.patient = {
-    rfid: 'aisduhfiu245',
-    id: $route.current.params.id,
-    firstName: 'Benjamin',
-    lastName: 'Roy',
-    age: 78,
-    condition: 'stable',
-    address: '1651 rue denault'
-  };
+		$scope.archivePatient = function() {
+			firebaseService.save('/patients/' + $route.current.params.id, { isStable: "11" });
+		}
 
-  $scope.savePatient = function() {
-    console.log('saving patient');
-    firebaseService.save('/patients/'+$route.current.params.id, $scope.patient);
-  };
+		$scope.restorePatient = function() {
+			firebaseService.save('/patients/' + $route.current.params.id, { isStable: "01" });
+		}
+
+	  $scope.savePatient = function() {
+			if (!$scope.patient.sex || !$scope.patient.birthdate || !$scope.patient.address || !$scope.patient.phoneNumber) {
+				alert('Certains champs obligatoires sont vides.');
+			} else if (isNaN(Date.parse($scope.patient.birthdate))) {
+				alert('La date de naissance entrée est invalide.');
+			} else if (!validatePhoneNumber($scope.patient.phoneNumber)) {
+				alert('Le numéro de téléphone entré est invalide.')
+			} else {
+				firebaseService.save('/patients/' + $route.current.params.id, JSON.parse(angular.toJson($scope.patient)));
+			 	alert('Les informations sur le patient ' + $route.current.params.id + ' ont été correctement enregistrées.');
+			}
+	  }
+
+		var validatePhoneNumber = function(phoneNumber) {
+			var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+			if (phoneNumber.match(phoneno)) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
 });

@@ -13,7 +13,7 @@ app.config(['$locationProvider', '$routeProvider',
       }
     })
   	.when('/patients', {
-  		templateUrl: 'views/patients-liste.html',
+  		templateUrl: 'views/patients-list.html',
   		controller: 'PatientsListController',
       resolve: {
         firebaseUser: ["Auth", function(Auth) {
@@ -27,16 +27,24 @@ app.config(['$locationProvider', '$routeProvider',
       resolve: {
         firebaseUser: ["Auth", function(Auth) {
           return Auth.$waitForSignIn();
-        }]
+        }],
+        patientInfos: function($route, firebaseService) {
+          return firebaseService.getPatient('patients/' + $route.current.params.id);
+        }
       }
     })
-    .when('/error', {
+    .when('/erreur', {
       templateUrl: 'views/error404.html',
       controller: 'PatientInformationController'
     })
-    .when('/patientForm', {
-      templateUrl: 'views/patient-form.html',
-      controller: 'PatientInformationController'
+    .when('/nouveau-patient', {
+      templateUrl: 'views/new-patient.html',
+      controller: 'AddPatientController',
+      resolve: {
+        firebaseUser: ["Auth", function(Auth) {
+          return Auth.$waitForSignIn();
+        }]
+      }
     })
     .when('/utilisateurs', {
       templateUrl: 'views/users-list.html',

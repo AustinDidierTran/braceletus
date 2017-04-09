@@ -1,8 +1,17 @@
 angular.module('FirebaseService', []).service('firebaseService', function($firebaseArray, $firebaseObject) {
 
+  this.addPatient = function(key, id, patient) {
+    const ref = firebase.database().ref(key).child(id).set(patient);
+  }
+
   this.getAll = function(key) {
-    var ref = firebase.database().ref().child(key);
+    const ref = firebase.database().ref(key);
     return $firebaseArray(ref);
+  }
+
+  this.getPatient = function(key) {
+    const ref = firebase.database().ref(key);
+    return $firebaseObject(ref);
   }
 
   this.save = (key, obj, _callback) => {

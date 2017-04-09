@@ -1,17 +1,17 @@
 <nav class="navbar navbar-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#" id="logo">
+    <a class="navbar-brand" href="/patients" id="logo">
       <img src="/img/logo300x109.png" id="logoImage">
     </a>
     <div class="menu">
       <div id="userName">{{user.email}}</div>
-      <div style="float:right;">
+      <div style="float:right">
         <div class="dropdown">
           <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu dropdown-menu-right">
-            <li><a href="#">Permissions</a></li>
+            <li><a ng-href="/utilisateurs">Permissions</a></li>
             <li><a href="#" ng-click="setUserPassword()">Changer le mot de passe</a></li>
             <li><a href="#" ng-click='signOut()'>Se déconnecter</a></li>
           </ul>

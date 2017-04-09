@@ -1,68 +1,87 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xs-offset-0 col-sm-offset-0 col-md-offset-2 col-lg-offset-2">
-      <H3>Informations sur le patient</H3>
+      <h3>{{title}}</h3>
       <div class="panel panel-info">
-        <div class="panel-heading">
-          <h3 class="panel-title"><td>{{patient.firstName}}</td> <td>{{patient.lastName}}</td></h3>
+        <div class="panel-heading" ng-style="patient.isStable == '00' && {'background-color':'#ff0000'}">
+          <h3 class="panel-title">
+            <span>{{patient.firstName}} {{patient.lastName}}</span>
+            <span ng-if="patient.isStable == '11'" class='pull-right'>(Dossier archivé)</span>
+          </h3>
         </div>
         <div class="panel-body">
           <div class="row">
-            <div class="col-md-3 col-lg-3" align="center"> <img alt="User Pic" src="\img\male-picture.png" class="img-circle img-responsive"></div>
+            <div class="col-md-3 col-lg-3" align="center">
+              <div ng-if="!patient.picture && patient.sex==='Homme'"><img class="img-circle img-responsive" src='../../img/male-picture.png' /></div>
+              <div ng-if="!patient.picture && patient.sex==='Femme'"><img class="img-circle img-responsive" src='../../img/female-picture.png'/></div>
+              <div ng-if="patient.picture"><img class="img-circle img-responsive patient-img" src="{{patient.picture}}" /></div>
+            </div>
             <div class="col-md-9 col-lg-9">
               <table class="table">
                 <tbody>
                   <tr>
-                    <td>RFID:</td>
-                    <td><input type="text" ng-model="patient.rfid" /></td>
+                    <td>Identifiant du bracelet:</td>
+                    <td><input class='form-control' type="text" ng-model="patient.rfid" /></td>
+                  </tr>
+                  <tr>
+                    <td>Identifiant du patient:</td>
+                    <td>{{patient.$id}}</td>
                   </tr>
                   <tr>
                     <td>État:</td>
-                    <td>{{patient.condition}}</td>
+                    <td>
+                      <span ng-show="patient.isStable=='00'">Instable</span>
+                      <span ng-show="patient.isStable=='01'">Stable</span>
+                      <span ng-show="patient.isStable=='11'">--</span>
+                    </td>
                   </tr>
                   <tr>
                     <td>Localisation:</td>
-                    <td><input type="text" ng-model="patient.localisation" /></td>
+                    <td>{{patient.location}}</td>
                   </tr>
                   <tr>
-                    <td>ID:</td>
-                    <td>{{patient.id}}</td>
+                    <td>* Sexe</td>
+                    <td>
+                      <select class='form-control' ng-options="s for s in sexTypes" ng-model="patient.sex"></select>
+                    </td>
                   </tr>
                   <tr>
-                    <td>Date de naissance (Âge: {{patient.age}}):</td>
-                    <td><input type="text" ng-model="patient.birthDate" /></td>
+                    <td>* Date de naissance:</td>
+                    <td><input class='form-control' type="text" placeholder="jj/mm/aaaa" ng-model="patient.birthdate" required /></td>
                   </tr>
                   <tr>
-                    <td>Adresse:</td>
-                    <td><input type="text" ng-model="patient.address" /></td>
+                    <td>* Adresse:</td>
+                    <td><input class='form-control' type="text" placeholder="Adresse" ng-model="patient.address" required /></td>
                   </tr>
                   <tr>
-                    <td>Numéro de téléphone:</td>
-                    <td><input type="text" ng-model="patient.phoneNumber" /></td>
+                    <td>* Numéro de téléphone:</td>
+                    <td><input class='form-control' type="tel" placeholder="123-456-7890" ng-model="patient.phoneNumber" required /></td>
                   </tr>
                   <tr>
                     <td>Raison de l'hospitalisation:</td>
-                    <td><input type="text" ng-model="patient.reasonHospitalization" /></td>
+                    <td><input class='form-control' type="text" placeholder="Raison de l'hospitalisation" ng-model="patient.hospitalizationReason" /></td>
                   </tr>
                   <tr>
                     <td>Allergie:</td>
-                    <td><input type="text" ng-model="patient.allergy" /></td>
+                    <td><textarea class='form-control' type="text" placeholder="Allergie" ng-model="patient.allergy"></textarea></td>
                   </tr>
                   <tr>
                     <td>Médicamentation:</td>
-                    <td><input type="text" ng-model="patient.medication" /></td>
+                    <td><textarea class='form-control' type="text" placeholder="Médicamentation" ng-model="patient.medication"></textarea></td>
                   </tr>
                   <tr>
                     <td>Alimentation:</td>
-                    <td><input type="text" ng-model="patient.food" /></td>
+                    <td><textarea class='form-control' type="text" placeholder="Alimentation" ng-model="patient.alimentation"></textarea></td>
                   </tr>
                   <tr>
                     <td>Autonomie:</td>
-                    <td><input type="text" ng-model="patient.autonomy" /></td>
+                    <td>
+                      <select class='form-control' ng-options="t for t in autonomyTypes" ng-model="patient.autonomy"></select>
+                    </td>
                   </tr>
                   <tr>
-                    <td>Autre:</td>
-                    <td><input type="text" ng-model="patient.other" /></td>
+                    <td>Autre(s):</td>
+                    <td><textarea class='form-control' type="text" placeholder="Autre(s)" ng-model="patient.others"></textarea></td>
                   </tr>
                 </tbody>
               </table>
@@ -71,8 +90,13 @@
         </div>
         <div class="panel-footer">
           <span class="pull-right">
-            <a href="" data-original-title="Modifier cet utilisateur" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" ng-click="savePatient()">Sauvegarder <i class="glyphicon glyphicon-save"></i></a>
-            <a data-original-title="Supprimer cet utilisateur" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger">Archiver <i class="glyphicon glyphicon-remove"></i></a>
+            <button type='button' class='btn btn-sm btn-success' ng-click='savePatient()'><i class="fa fa-save" aria-hidden="true"></i> Enregister</button>
+            <span ng-if="patient.isStable==='11'">
+              <button type='button' class='btn btn-sm btn-danger' ng-click='restorePatient()'><i class="fa fa-remove" aria-hidden="true"></i> Restaurer</button>
+            </span>
+            <span ng-if="patient.isStable!== '11'">
+              <button type='button' class='btn btn-sm btn-danger' ng-click='archivePatient()'><i class="fa fa-remove" aria-hidden="true"></i> Archiver</button>
+            </span>
           </span>
         </div>
       </div>
