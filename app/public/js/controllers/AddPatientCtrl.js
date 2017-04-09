@@ -1,5 +1,5 @@
 angular.module('AddPatientCtrl', []).controller('AddPatientController',
-	function($location, $scope, $route, firebaseService) {
+	function($location, $scope, $route, firebaseService, utilityService) {
 
 		firebaseService.getAll('patients/').$loaded().then(function(patientsList) {
 			$scope.patientId = patientsList.length + 1;
@@ -28,7 +28,7 @@ angular.module('AddPatientCtrl', []).controller('AddPatientController',
 		$scope.addNewPatient = function() {
 			if (!$scope.patient.firstName || !$scope.patient.lastName || !$scope.patient.sex || !$scope.patient.birthdate || !$scope.patient.address || !$scope.patient.phoneNumber) {
 				alert('Certains champs obligatoires sont vides.');
-			} else if (!validatePhoneNumber($scope.patient.phoneNumber)) {
+			} else if (!utilityService.validatePhoneNumber($scope.patient.phoneNumber)) {
 				alert('Le numéro de téléphone entré est invalide.')
 			} else {
 				firebaseService.addPatient('/patients', $scope.patientId, $scope.patient);
@@ -38,15 +38,6 @@ angular.module('AddPatientCtrl', []).controller('AddPatientController',
 
 		$scope.cancel = function() {
 			$location.path('/patients');
-		}
-
-		var validatePhoneNumber = function(phoneNumber) {
-			var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-		  if (phoneNumber.match(phoneno)) {
-		    return true;
-		  } else {
-		    return false;
-		  }
 		}
 
 });

@@ -19,7 +19,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="patient in patients | orderBy:'isStable'"
+    <tr ng-repeat="patient in patients | patientsList:'isStable'"
         ng-style="patient.isStable == '00' && {'background-color':'#FFCDD2'} || patient.isStable == '01' && {'background-color':'#ccffcc'} || patient.isStable == '11' && {'text-decoration': 'line-through'}">
       <td>{{ patient.$id }}</td>
       <td>
