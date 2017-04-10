@@ -1,10 +1,11 @@
 var app = angular.module('PatientsListCtrl', []);
 
 app.controller('PatientsListController',
-	function($location, $scope, DTOptionsBuilder, DTColumnDefBuilder, firebaseService, patientsListFilter) {
+	function($location, $scope, DTOptionsBuilder, DTColumnDefBuilder, firebaseService, utilityService, patientsListFilter) {
 
 		$scope.title = 'État des patients';
 		$scope.patients = firebaseService.getAll('patients');
+		$scope.calculateAge = utilityService.calculateAge;
 		$scope.dtInstance = {};
 		$scope.dtOptions = DTOptionsBuilder.newOptions()
 			.withPaginationType('full_numbers')

@@ -17,7 +17,7 @@ angular.module('PatientInformationCtrl', []).controller('PatientInformationContr
 	  $scope.savePatient = function() {
 			if (!$scope.patient.sex || !$scope.patient.birthdate || !$scope.patient.address || !$scope.patient.phoneNumber) {
 				alert('Certains champs obligatoires sont vides.');
-			} else if (isNaN(Date.parse($scope.patient.birthdate))) {
+			} else if (!utilityService.validateDate($scope.patient.birthdate)) {
 				alert('La date de naissance entrée est invalide.');
 			} else if (!utilityService.validatePhoneNumber($scope.patient.phoneNumber)) {
 				alert('Le numéro de téléphone entré est invalide.')
