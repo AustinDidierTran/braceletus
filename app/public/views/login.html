@@ -16,13 +16,13 @@
 
   <div class="form-group">
     <a href="#" class="btn btn-success login-btn" ng-if='isSignIn' ng-click='signIn()'>Connexion</a>
-    <a href="#" class="btn btn-success login-btn" ng-if='!isSignIn' ng-click='signIn()'>S'enregistrer</a>
+    <a href="#" class="btn btn-success login-btn" ng-if='!isSignIn' ng-click='signUp()'>S'enregistrer</a>
   </div>
 
   <div class="form-group login-footer text-center">
     <a ng-click='resetPassword()'>Mot de passe oublié</a> ou
     <a ng-if='isSignIn' ng-click='setIsSignIn(false)'>s'enregistrer</a>
-    <a ng-if='!isSignIn' ng-click='setIsSignIn(true)'>s'enregistrer</a>
+    <a ng-if='!isSignIn' ng-click='setIsSignIn(true)'>se connecter</a>
   </div>
 
 </form>
