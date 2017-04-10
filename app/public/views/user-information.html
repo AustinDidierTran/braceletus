@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xs-offset-0 col-sm-offset-0 col-md-offset-2 col-lg-offset-2">
+      <h3 class="page-header">{{title}}</h3>
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <span>{{user.email}}</span>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-3 col-lg-3" align="center">
+              <div ng-if="!user.picture"><img class="img-circle img-responsive patient-img" src='../../img/male-picture.png' /></div> </br>
+              <div ng-if="user.picture"><img class="img-circle img-responsive patient-img" src="{{user.picture}}" /></div>
+              <a ng-href="">Modifier la photo</a>
+            </div>
+            <div class="col-md-9 col-lg-9">
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td>* Prénom:</td>
+                    <td><input class='form-control' type="text" placeholder="Benjamin" ng-model="user.firstName" required /></td>
+                  </tr>
+                  <tr>
+                    <td>* Nom:</td>
+                    <td><input class='form-control' type="text" placeholder="Benjamin" ng-model="user.lastName" required /></td>
+                  </tr>
+                  <tr>
+                    <td>* Droits/permissions</td>
+                    <td>
+                      <select class='form-control' ng-options="s for s in permissionTypes" ng-model="user.type"></select>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer">
+          <span class="pull-right">
+            <button type='button' class='btn btn-sm btn-success' ng-click='saveUser()'><i class="fa fa-save" aria-hidden="true"></i> Enregister</button>
+            <button type='button' class='btn btn-sm btn-danger' ng-click='cancel()'><i class="fa fa-remove" aria-hidden="true"></i> Annuler</button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
