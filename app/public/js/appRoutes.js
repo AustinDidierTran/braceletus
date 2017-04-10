@@ -29,7 +29,7 @@ app.config(['$locationProvider', '$routeProvider',
           return Auth.$waitForSignIn();
         }],
         patientInfos: function($route, firebaseService) {
-          return firebaseService.getPatient('patients/' + $route.current.params.id);
+          return firebaseService.getPatient($route.current.params.id);
         }
       }
     })

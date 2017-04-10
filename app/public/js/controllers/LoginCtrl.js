@@ -2,12 +2,17 @@ var app = angular.module('LoginCtrl', []);
 
 app.controller('LoginController', function($location, $rootScope, $scope, $timeout, firebaseService) {
 
-  var createProfile = function(user) {
+  var createProfile = function(email, type = 'Utilisateur') {
     // Look if profile with email already exist
-    firebaseService.getObjectsWithAttribute('/users', 'email', user.email).$loaded().then(function(profile) {
+    firebaseService.getObjectsWithAttribute('/users', 'email', email).$loaded().then(function(profile) {
       // Create profile if it exists
       if(!profile.length) {
-        firebaseService.createObject('/users', firebase.auth().currentUser);
+        var utilisateur = {
+          email: email,
+          type: type,
+        };
+
+        firebaseService.createObject('/users', utilisateur);
       }
     });
   }
@@ -34,7 +39,7 @@ app.controller('LoginController', function($location, $rootScope, $scope, $timeo
   $scope.signIn = function() {
     firebaseService.signIn($scope.user.email, $scope.user.password).then(function(user) {
 
-      createProfile(user);
+      createProfile($scope.user.email);
 
       $rootScope.user = user; // TODO: Store the user in cache?
       $location.path('/patients');
@@ -52,7 +57,7 @@ app.controller('LoginController', function($location, $rootScope, $scope, $timeo
   $scope.signUp = function() {
     firebaseService.signUp($scope.user.email, $scope.user.password).then(function(user) {
 
-      createProfile(user);
+      createProfile($scope.user.email);
 
       $rootScope.user = user; // TODO: Store the user in cache?
       $location.path('/patients');

@@ -9,14 +9,21 @@ angular.module('FirebaseService', []).service('firebaseService', function($fireb
     return $firebaseArray(ref);
   }
 
-  this.getPatient = function(key) {
-    const ref = firebase.database().ref(key);
+  this.getUsers = function() {
+    const ref = firebase.database().ref('users/');
+    return $firebaseArray(ref);
+  }
+
+  this.getPatient = function(id) {
+    const ref = firebase.database().ref('patients/' + key);
     return $firebaseObject(ref);
   }
 
-  this.createObject = (key, obj, _callback) => {
+  this.createObject = function(key, obj, _callback) {
       const ref = firebase.database().ref(key);
       const list = $firebaseArray(ref);
+
+      console.log('creating object', obj);
       
       return list.$add(obj);
     };
@@ -27,7 +34,7 @@ angular.module('FirebaseService', []).service('firebaseService', function($fireb
     return $firebaseArray(ref.orderByChild(attr).equalTo(value));
   }
 
-  this.save = (key, obj, _callback) => {
+  this.save = function(key, obj, _callback) {
     const ref = firebase.database().ref(key);
 
     const object = $firebaseObject(ref);
