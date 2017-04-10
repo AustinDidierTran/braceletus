@@ -5,9 +5,9 @@ app.controller('LoginController', function($location, $rootScope, $scope, $timeo
   var createProfile = function(user) {
     // Look if profile with email already exist
     firebaseService.getObjectsWithAttribute('/users', 'email', user.email).$loaded().then(function(profile) {
+      // Create profile if it exists
       if(!profile.length) {
-        console.log('profile doesnt exist');
-        // If it doesn't already exist, create it
+        firebaseService.createObject('/users', firebase.auth().currentUser);
       }
     });
   }
