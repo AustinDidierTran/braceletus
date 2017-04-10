@@ -2,6 +2,16 @@ var app = angular.module('LoginCtrl', []);
 
 app.controller('LoginController', function($location, $rootScope, $scope, $timeout, firebaseService) {
 
+  var createProfile = function(user) {
+    // Look if profile with email already exist
+    firebaseService.getObjectsWithAttribute('/users', 'email', user.email).$loaded().then(function(profile) {
+      if(!profile.length) {
+        console.log('profile doesnt exist');
+        // If it doesn't already exist, create it
+      }
+    });
+  }
+
   // TODO: Replace alerts by ui-bootstrap-alerts: https://angular-ui.github.io/bootstrap/
   $scope.user = { email: '', password: '' };
 
@@ -23,6 +33,9 @@ app.controller('LoginController', function($location, $rootScope, $scope, $timeo
 
   $scope.signIn = function() {
     firebaseService.signIn($scope.user.email, $scope.user.password).then(function(user) {
+
+      createProfile(user);
+
       $rootScope.user = user; // TODO: Store the user in cache?
       $location.path('/patients');
       $scope.$apply();
@@ -38,6 +51,9 @@ app.controller('LoginController', function($location, $rootScope, $scope, $timeo
 
   $scope.signUp = function() {
     firebaseService.signUp($scope.user.email, $scope.user.password).then(function(user) {
+
+      createProfile(user);
+
       $rootScope.user = user; // TODO: Store the user in cache?
       $location.path('/patients');
       $scope.$apply();
