@@ -15,7 +15,7 @@ angular.module('FirebaseService', []).service('firebaseService', function($fireb
   }
 
   this.getPatient = function(id) {
-    const ref = firebase.database().ref('patients/' + key);
+    const ref = firebase.database().ref('patients/' + id);
     return $firebaseObject(ref);
   }
 
