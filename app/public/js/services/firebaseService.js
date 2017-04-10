@@ -14,7 +14,6 @@ angular.module('FirebaseService', []).service('firebaseService', function($fireb
     return $firebaseObject(ref);
   }
 
-<<<<<<< HEAD
   this.createObject = (key, obj, _callback) => {
       const ref = firebase.database().ref(key);
       const list = $firebaseArray(ref);
@@ -22,8 +21,6 @@ angular.module('FirebaseService', []).service('firebaseService', function($fireb
       return list.$add(obj);
     };
 
-=======
->>>>>>> Working on profiles
   this.getObjectsWithAttribute = function(key, attr, value) {
     var ref = firebase.database().ref(key);
 
