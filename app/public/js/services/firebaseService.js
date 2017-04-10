@@ -14,6 +14,13 @@ angular.module('FirebaseService', []).service('firebaseService', function($fireb
     return $firebaseObject(ref);
   }
 
+  this.createObject = (key, obj, _callback) => {
+      const ref = firebase.database().ref(key);
+      const list = $firebaseArray(ref);
+      
+      return list.$add(obj);
+    };
+
   this.getObjectsWithAttribute = function(key, attr, value) {
     var ref = firebase.database().ref(key);
 

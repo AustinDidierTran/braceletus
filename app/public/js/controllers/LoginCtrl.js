@@ -8,6 +8,7 @@ app.controller('LoginController', function($location, $rootScope, $scope, $timeo
       if(!profile.length) {
         console.log('profile doesnt exist');
         // If it doesn't already exist, create it
+        firebaseService.createObject('/users', firebase.auth().currentUser);
       }
     });
   }
