@@ -2,7 +2,7 @@ var app = angular.module('LoginCtrl', []);
 
 app.controller('LoginController', function($location, $rootScope, $scope, $timeout, firebaseService) {
 
-  var createProfile = function(email, type = 'Utilisateur') {
+  var createProfile = function(email, type = 'Aucun') {
     // Look if profile with email already exist
     firebaseService.getObjectsWithAttribute('/users', 'email', email).$loaded().then(function(profile) {
       // Create profile if it exists
@@ -45,7 +45,7 @@ app.controller('LoginController', function($location, $rootScope, $scope, $timeo
       $location.path('/patients');
       $scope.$apply();
     }).catch(function(error) {
-      console.log(error.code + ': ' + error.message);
+      console.error(error.code + ': ' + error.message);
       alert('Le nom d\'utilisateur ou le mot de passe est incorrect');
     });
   }
@@ -63,7 +63,7 @@ app.controller('LoginController', function($location, $rootScope, $scope, $timeo
       $location.path('/patients');
       $scope.$apply();
     }).catch(function(error) {
-      console.log(error.code + ': ' + error.message);
+      console.error(error.code + ': ' + error.message);
       alert('Le nom d\'utilisateur ou le mot de passe est incorrect');
     });
   }

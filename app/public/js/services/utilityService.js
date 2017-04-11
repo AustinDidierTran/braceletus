@@ -6,10 +6,8 @@ angular.module('UtilityService', []).service('utilityService', function() {
 
     var age = currentDate.getFullYear() - birthDate.getFullYear();
 
-    if(birthDate.getMonth() > currentDate.getMonth()) {
+    if(birthDate.getMonth() > currentDate.getMonth() || (birthDate.getMonth() == currentDate.getMonth() && birthDate.getDate() > currentDate.getDate())) {
       age--;
-    } else if (birthDate.getMonth() == currentDate.getMonth() && birthDate.getDate() > currentDate.getDate()) {
-      age--
     }
 
     return age;

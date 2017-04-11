@@ -1,7 +1,7 @@
 var app = angular.module('PatientsListCtrl', []);
 
 app.controller('PatientsListController',
-	function($location, $scope, DTOptionsBuilder, DTColumnDefBuilder, firebaseService, utilityService, patientsListFilter) {
+	function($location, $rootScope, $scope, DTOptionsBuilder, DTColumnDefBuilder, firebaseService, utilityService, patientsListFilter) {
 
 		$scope.title = 'État des patients';
 		$scope.patients = firebaseService.getAll('patients');
@@ -26,6 +26,12 @@ app.controller('PatientsListController',
 		$scope.addPatient = function() {
 			$location.path('/nouveau-patient');
 		}
+
+		setTimeout(function() {
+			$scope.canViewPatients = $rootScope.currentUser[0].type !== 'Aucun';
+			$scope.canEditPatients = $rootScope.currentUser[0].type !== 'Aucun' && $rootScope.currentUser[0].type !== 'Utilisateur Type 1';
+			$scope.$apply();
+		}, 1000);
 
 		function rowCallback(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
 			// Unbind first in order to avoid any duplicate handler
