@@ -20,16 +20,21 @@
                 <tbody>
                   <tr>
                     <td>* Prénom:</td>
-                    <td><input class='form-control' type="text" placeholder="Benjamin" ng-model="user.firstName" required /></td>
+                    <td><input class='form-control' type="text" placeholder="Prénom" ng-model="user.firstName" required /></td>
                   </tr>
                   <tr>
                     <td>* Nom:</td>
-                    <td><input class='form-control' type="text" placeholder="Benjamin" ng-model="user.lastName" required /></td>
+                    <td><input class='form-control' type="text" placeholder="Nom de famille" ng-model="user.lastName" required /></td>
+                  </tr>
+                  <tr>
+                    <td>* Email:</td>
+                    <td>{{user.email}}</td>
                   </tr>
                   <tr>
                     <td>* Droits/permissions</td>
                     <td>
-                      <select class='form-control' ng-options="s for s in permissionTypes" ng-model="user.type"></select>
+                      <select ng-show="isAdmin" class='form-control' ng-options="s for s in permissionTypes" ng-model="user.type"></select>
+                      <span ng-hide="isAdmin">{{user.type}}</span>
                     </td>
                   </tr>
                 </tbody>

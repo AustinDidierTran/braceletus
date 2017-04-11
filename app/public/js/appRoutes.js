@@ -70,10 +70,10 @@ app.config(['$locationProvider', '$routeProvider',
 ]);
 
 
-app.run(['$location', '$rootScope', function($location, $rootScope) {
+app.run(['$location', '$rootScope', 'firebaseService', function($location, $rootScope, firebaseService) {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-      $rootScope.currentUser = user;
+      $rootScope.currentUser = firebaseService.getUserByEmail(user.email);
       if ($location.path() === '/connexion') {
         $location.path('/patients');
       }

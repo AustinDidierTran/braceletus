@@ -9,6 +9,17 @@ angular.module('FirebaseService', []).service('firebaseService', function($fireb
     return $firebaseArray(ref);
   }
 
+  this.getUserById = function(id) {
+    var ref = firebase.database().ref('users/' + id);
+    return $firebaseObject(ref);
+  }
+
+  this.getUserByEmail = function(email) {
+    var ref = firebase.database().ref('users/');
+
+    return $firebaseArray(ref.orderByChild('email').equalTo(email));
+  }
+
   this.getUsers = function() {
     const ref = firebase.database().ref('users/');
     return $firebaseArray(ref);
@@ -23,8 +34,6 @@ angular.module('FirebaseService', []).service('firebaseService', function($fireb
       const ref = firebase.database().ref(key);
       const list = $firebaseArray(ref);
 
-      console.log('creating object', obj);
-
       return list.$add(obj);
     };
 
@@ -32,6 +41,25 @@ angular.module('FirebaseService', []).service('firebaseService', function($fireb
     var ref = firebase.database().ref(key);
 
     return $firebaseArray(ref.orderByChild(attr).equalTo(value));
+  }
+
+  this.saveUser = function(id, obj, _callback) {
+    var ref = firebase.database().ref('users/'+id);
+    
+    var object = $firebaseObject(ref);
+    
+    object.$loaded().then(function(o1) {
+      for(var i in obj) {
+        object[i] = obj[i];
+      }
+
+      object.$save().then(function(o2) {
+        if(_callback) {
+          _callback(o2);
+        }
+      })
+    })
+
   }
 
   this.save = function(key, obj, _callback) {
