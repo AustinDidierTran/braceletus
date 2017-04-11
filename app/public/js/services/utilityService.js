@@ -3,8 +3,16 @@ angular.module('UtilityService', []).service('utilityService', function() {
   this.calculateAge = function(date) {
     var birthDate = new Date(date);
     var currentDate = new Date();
-    var diff = currentDate - birthDate;  // Différence en milliseconds
-    return Math.floor(diff/31557600000); // Nombre de milliseconds par années (1000*60*60*24*365.25)
+
+    var age = currentDate.getFullYear() - birthDate.getFullYear();
+
+    if(birthDate.getMonth() > currentDate.getMonth()) {
+      age--;
+    } else if (birthDate.getMonth() == currentDate.getMonth() && birthDate.getDate() > currentDate.getDate()) {
+      age--
+    }
+
+    return age;
   }
 
   this.validateDate = function(date) {

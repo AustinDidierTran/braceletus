@@ -7,11 +7,11 @@ angular.module('PatientInformationCtrl', []).controller('PatientInformationContr
 		$scope.sexTypes = ['Homme', 'Femme'];
 
 		$scope.archivePatient = function() {
-			firebaseService.save('/patients/' + $route.current.params.id, { isStable: "11" });
+			firebaseService.save('/patients/' + $route.current.params.id, { isStable: "2" });
 		}
 
 		$scope.restorePatient = function() {
-			firebaseService.save('/patients/' + $route.current.params.id, { isStable: "01" });
+			firebaseService.save('/patients/' + $route.current.params.id, { isStable: "1" });
 		}
 
 	  $scope.savePatient = function() {

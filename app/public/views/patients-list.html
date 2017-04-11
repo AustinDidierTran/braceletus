@@ -21,7 +21,7 @@
   </thead>
   <tbody>
     <tr ng-repeat="patient in patients | patientsList:'isStable'"
-        ng-style="patient.isStable == '00' && {'background-color':'#FFCDD2'} || patient.isStable == '01' && {'background-color':'#ccffcc'} || patient.isStable == '11' && {'text-decoration': 'line-through'}">
+        ng-style="patient.isStable == '0' && {'background-color':'#FFCDD2'} || patient.isStable == '1' && {'background-color':'#ccffcc'} || patient.isStable == '2' && {'text-decoration': 'line-through'}">
       <td>{{ patient.$id }}</td>
       <td>
         <div ng-show="!patient.picture && patient.sex==='Homme'">
