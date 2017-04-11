@@ -19,6 +19,7 @@ app.controller('PatientsListController',
 			DTColumnDefBuilder.newColumnDef(3).notSortable(), // Last Name
 			DTColumnDefBuilder.newColumnDef(4).notSortable(),	// Age
 			DTColumnDefBuilder.newColumnDef(5).notSortable(), // Sex
+			DTColumnDefBuilder.newColumnDef(5).notSortable(), // Location
 			DTColumnDefBuilder.newColumnDef(6).notSortable() // Condition
 	  ];
 
