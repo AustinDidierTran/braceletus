@@ -1,5 +1,5 @@
 angular.module('PatientInformationCtrl', []).controller('PatientInformationController',
-	function($location, $rootScope, $scope, $route, patientInfos, firebaseService, utilityService) {
+	function($location, $rootScope, $scope, $route, patientInfos, firebaseService, firebaseUser, utilityService) {
 
 		$scope.title = 'Informations sur le patient';
 		$scope.patient = patientInfos;
@@ -27,10 +27,11 @@ angular.module('PatientInformationCtrl', []).controller('PatientInformationContr
 			}
 	  }
 
-		setTimeout(function() {
-			$scope.canViewPatients = $rootScope.currentUser[0].type !== 'Aucun';
-			$scope.canEditPatients = $rootScope.currentUser[0].type !== 'Aucun' && $rootScope.currentUser[0].type !== 'Utilisateur Type 1';
-			$scope.$apply();
-		}, 1000);
+		var users = firebaseService.getUserByEmail(firebaseUser.email);
+		users.$loaded().then(function() {
+			$scope.user = users[0];
+			$scope.canViewPatients = $scope.user.type !== 'Aucun';
+			$scope.canEditPatients = $scope.user.type !== 'Aucun' && $scope.user.type !== 'Utilisateur Type 1';
+		});
 
 });
