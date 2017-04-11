@@ -59,6 +59,10 @@ app.config(['$locationProvider', '$routeProvider',
         }]
       }
     })
+    .when('/utilisateur/:id', {
+      templateUrl: 'views/user-information.html',
+      controller: 'UserInformationController',
+    })
     .otherwise({redirectTo:'/connexion'});
 
     $locationProvider.html5Mode(true);
@@ -69,12 +73,12 @@ app.config(['$locationProvider', '$routeProvider',
 app.run(['$location', '$rootScope', function($location, $rootScope) {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-      $rootScope.user = user;
+      $rootScope.currentUser = user;
       if ($location.path() === '/connexion') {
         $location.path('/patients');
       }
     } else {
-      $rootScope.user = null;
+      $rootScope.currentUser = null;
       $location.path('/connexion');
     }
   });

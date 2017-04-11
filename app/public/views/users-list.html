@@ -9,6 +9,7 @@
 <table width='100%' datatable="ng" dt-options="dtOptions" dt-instance="dtInstance" dt-column-defs="dtColumnDefs" class="row-border hover">
   <thead>
     <tr>
+      <th ng-show="false">ID</th>
       <th>Photo</th>
       <th>Courriel</th>
       <th>Prénom</th>
@@ -19,6 +20,7 @@
   </thead>
   <tbody>
     <tr ng-repeat="user in users | orderBy:'type'">
+      <td ng-show="false">{{ user.$id }}</td>
       <td>
         <img class="img-responsive user-img" src="{{user.picture}}" />
       </td>
@@ -27,10 +29,7 @@
       <td>{{ user.lastName }}</td>
       <td>{{ user.type }}</td>
       <td>
-        <button class="btn btn-warning" ng-click="editUser(user)">
-          <i class="fa fa-edit"></i>
-        </button>
-        <button class="btn btn-danger" ng-click="deleteUser(user)">
+        <button class="btn btn-danger" ng-click="deleteUser(user.$id)">
           <i class="fa fa-trash-o"></i>
         </button>
       </td>
