@@ -11,7 +11,7 @@ angular.module('PatientInformationCtrl', []).controller('PatientInformationContr
 		}
 
 		$scope.restorePatient = function() {
-			firebaseService.save('/patients/' + $route.current.params.id, { isStable: "1" });
+			firebaseService.save('/patients/' + $route.current.params.id, { isStable: "0" });
 		}
 
 	  $scope.savePatient = function() {
