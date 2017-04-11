@@ -35,7 +35,7 @@
       </td>
       <td>{{ patient.firstName }}</td>
       <td>{{ patient.lastName }}</td>
-      <td>{{ patient.age }}</td>
+      <td>{{ calculateAge(patient.birthdate) }}</td>
       <td>{{ patient.sex }}</td>
       <td ng-show='false'>{{ patient.isStable }}</td>
     </tr>
