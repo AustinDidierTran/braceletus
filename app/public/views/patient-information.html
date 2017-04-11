@@ -3,7 +3,7 @@
     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xs-offset-0 col-sm-offset-0 col-md-offset-2 col-lg-offset-2">
       <h3>{{title}}</h3>
       <div ng-show="canViewPatients" class="panel panel-info">
-        <div class="panel-heading" ng-style="patient.isStable == '0' && {'background-color':'#ff0000'}">
+        <div class="panel-heading" ng-style="patient.isStable == '1' && {'background-color':'#ff0000'}">
           <h3 class="panel-title">
             <span>{{patient.firstName}} {{patient.lastName}}</span>
             <span ng-if="patient.isStable == '2'" class='pull-right'>(Dossier archivé)</span>
@@ -33,8 +33,8 @@
                   <tr>
                     <td>État:</td>
                     <td>
-                      <span ng-show="patient.isStable=='0'">Instable</span>
-                      <span ng-show="patient.isStable=='1'">Stable</span>
+                      <span ng-show="patient.isStable=='0'">Stable</span>
+                      <span ng-show="patient.isStable=='1'">Instable</span>
                       <span ng-show="patient.isStable=='2'">--</span>
                     </td>
                   </tr>
