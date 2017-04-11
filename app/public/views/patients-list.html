@@ -1,45 +1,51 @@
 <h1 class='page-header'>{{title}}</h1>
 
-<div class='form-group'>
-  <button type='button' class='btn btn-success' ng-click='addPatient()'>
-    <i class="fa fa-plus-circle" aria-hidden="true"></i> Ajouter un patient
-  </button>
+<div ng-show="canViewPatients">
+  <div class='form-group' ng-show="canEditPatients">
+    <button type='button' class='btn btn-success' ng-click='addPatient()'>
+      <i class="fa fa-plus-circle" aria-hidden="true"></i> Ajouter un patient
+    </button>
+  </div>
+
+  <table width='100%' datatable="ng" dt-options="dtOptions" dt-instance="dtInstance" dt-column-defs="dtColumnDefs" class="row-border hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Photo</th>
+        <th>Prénom</th>
+        <th>Nom</th>
+        <th>Âge</th>
+        <th>Sexe</th>
+        <th>Localisation</th>
+        <th ng-show='false'>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="patient in patients | patientsList:'isStable'"
+          ng-style="patient.isStable == '0' && {'background-color':'#FFCDD2'} || patient.isStable == '1' && {'background-color':'#ccffcc'} || patient.isStable == '2' && {'text-decoration': 'line-through'}">
+        <td>{{ patient.$id }}</td>
+        <td>
+          <div ng-show="!patient.picture && patient.sex==='Homme'">
+            <img src='../../img/male-picture.png' />
+          </div>
+          <div ng-show="!patient.picture && patient.sex==='Femme'">
+            <img src='../../img/female-picture.png' />
+          </div>
+          <div ng-show="patient.picture">
+            <img class="img-responsive user-img" src="{{patient.picture}}" />
+          </div>
+        </td>
+        <td>{{ patient.firstName }}</td>
+        <td>{{ patient.lastName }}</td>
+        <td>{{ calculateAge(patient.birthdate) }}</td>
+        <td>{{ patient.sex }}</td>
+        <td>{{ patient.location }}</td>
+        <td ng-show='false'>{{ patient.isStable }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
-<table width='100%' datatable="ng" dt-options="dtOptions" dt-instance="dtInstance" dt-column-defs="dtColumnDefs" class="row-border hover">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Photo</th>
-      <th>Prénom</th>
-      <th>Nom</th>
-      <th>Âge</th>
-      <th>Sexe</th>
-      <th>Localisation</th>
-      <th ng-show='false'>Condition</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="patient in patients | patientsList:'isStable'"
-        ng-style="patient.isStable == '0' && {'background-color':'#FFCDD2'} || patient.isStable == '1' && {'background-color':'#ccffcc'} || patient.isStable == '2' && {'text-decoration': 'line-through'}">
-      <td>{{ patient.$id }}</td>
-      <td>
-        <div ng-show="!patient.picture && patient.sex==='Homme'">
-          <img src='../../img/male-picture.png' />
-        </div>
-        <div ng-show="!patient.picture && patient.sex==='Femme'">
-          <img src='../../img/female-picture.png' />
-        </div>
-        <div ng-show="patient.picture">
-          <img class="img-responsive user-img" src="{{patient.picture}}" />
-        </div>
-      </td>
-      <td>{{ patient.firstName }}</td>
-      <td>{{ patient.lastName }}</td>
-      <td>{{ calculateAge(patient.birthdate) }}</td>
-      <td>{{ patient.sex }}</td>
-      <td>{{ patient.location }}</td>
-      <td ng-show='false'>{{ patient.isStable }}</td>
-    </tr>
-  </tbody>
-</table>
+<div ng-hide="canViewPatients">
+  <h3>Désolé, vous n'avez pas accès à l'état des patients</h3>
+</div>

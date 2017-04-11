@@ -23,6 +23,7 @@ app.controller('UserInformationController',
 
     setTimeout(function() {
       $scope.isAdmin = $rootScope.currentUser[0].type == 'Administrateur';
+      $scope.isUser = $rootScope.currentUser[0].email == $scope.user.email;
       $scope.$apply();
     }, 1000);
 });
