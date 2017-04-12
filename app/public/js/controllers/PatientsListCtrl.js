@@ -29,9 +29,8 @@ app.controller('PatientsListController',
 
 		var users = firebaseService.getUserByEmail(firebaseUser.email);
 		users.$loaded().then(function() {
-			$scope.user = users[0];
-			$scope.canViewPatients = $scope.user && $scope.user.type !== 'Aucun';
-			$scope.canEditPatients = $scope.user && $scope.user.type !== 'Aucun' && $scope.user.type !== 'Utilisateur Type 1';
+			$scope.canViewPatients = users[0] && users[0].type !== 'Aucun';
+			$scope.canEditPatients = users[0] && users[0].type !== 'Aucun' && users[0].type !== 'Utilisateur Type 1';
 		});
 
 		function rowCallback(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
