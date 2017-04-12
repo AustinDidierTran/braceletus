@@ -2,10 +2,10 @@ angular.module('PatientsListFilter', []).filter('patientsList', function() {
 
   var orderByStatus = function(status) {
 		switch (status) {
-			case '0':     // État Instable
-				return 1;
-			case '1':     // État Stable
+			case '0':     // État stable
 				return 2;
+			case '1':     // État nstable
+				return 1;
 			case '2':     // Dossier archivé
 				return 3;
 			}

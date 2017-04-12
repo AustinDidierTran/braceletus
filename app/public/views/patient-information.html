@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xs-offset-0 col-sm-offset-0 col-md-offset-2 col-lg-offset-2">
-      <h3>{{title}}</h3>
+      <h3 class="page-header">{{title}}</h3>
       <div ng-show="canViewPatients" class="panel panel-info">
         <div class="panel-heading" ng-style="patient.isStable == '1' && {'background-color':'#ff0000'}">
           <h3 class="panel-title">
@@ -23,7 +23,7 @@
                     <td>Identifiant du bracelet:</td>
                     <td>
                       <input ng-show="canEditPatients" class='form-control' type="text" ng-model="patient.rfid" />
-                      <span ng-hide="canEditPatients">{{patient.rfid}}</span>  
+                      <span ng-hide="canEditPatients">{{patient.rfid}}</span>
                     </td>
                   </tr>
                   <tr>
@@ -129,7 +129,7 @@
           </span>
         </div>
       </div>
-      <h4 ng-hide="canViewPatients">Désolé, vous n'avez pas accès pour voir les informations de ce patient</h4>
+      <h4 ng-show="canViewPatients==false">Désolé, vous n'avez pas accès pour voir les informations de ce patient</h4>
     </div>
   </div>
 </div>
