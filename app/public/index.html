@@ -67,7 +67,7 @@
   <body ng-app='braceletusApp'>
 
     <!-- Common navbar -->
-    <div ng-if="user !== null" ng-include="'/views/partials/navbar.html'" ng-controller="NavbarController"></div>
+    <div ng-if="currentUser!==null" ng-include="'/views/partials/navbar.html'" ng-controller="NavbarController"></div>
 
     <!-- Angular dynamic content -->
     <div class="container">
@@ -75,7 +75,7 @@
     </div>
 
     <!-- Common footer -->
-    <div ng-if="user !== null" ng-include="'/views/partials/footer.html'"></div>
+    <div ng-if="currentUser!==null" ng-include="'/views/partials/footer.html'"></div>
 
   </body>
 </html>
