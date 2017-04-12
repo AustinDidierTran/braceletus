@@ -45,9 +45,9 @@ angular.module('FirebaseService', []).service('firebaseService', function($fireb
 
   this.saveUser = function(id, obj, _callback) {
     var ref = firebase.database().ref('users/'+id);
-    
+
     var object = $firebaseObject(ref);
-    
+
     object.$loaded().then(function(o1) {
       for(var i in obj) {
         object[i] = obj[i];

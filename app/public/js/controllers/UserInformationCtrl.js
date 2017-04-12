@@ -1,7 +1,7 @@
 var app = angular.module('UserInformationCtrl', []);
 
 app.controller('UserInformationController',
-	function($location, $rootScope, $scope, $route, firebaseService) {
+	function($location, $rootScope, $scope, $route, firebaseService, firebaseUser) {
 
     $scope.title = "Information sur l'utilisateur";
     $scope.permissionTypes = ['Aucun', 'Utilisateur Type 1', 'Utilisateur Type 2', 'Administrateur'];
@@ -11,19 +11,20 @@ app.controller('UserInformationController',
 			$location.path('/utilisateurs');
 		}
 
-    $scope.saveUser = function() { 
+    $scope.saveUser = function() {
       var obj = {
         firstName: $scope.user.firstName,
         lastName: $scope.user.lastName,
         type: $scope.user.type
       }
-
       firebaseService.saveUser($route.current.params.id, obj);
     }
 
-    setTimeout(function() {
-      $scope.isAdmin = $rootScope.currentUser[0].type == 'Administrateur';
-      $scope.isUser = $rootScope.currentUser[0].email == $scope.user.email;
-      $scope.$apply();
-    }, 1000);
+		var users = firebaseService.getUserByEmail(firebaseUser.email);
+		users.$loaded().then(function() {
+			$scope.user = users[0];
+			$scope.isAdmin = $scope.user.type == 'Administrateur';
+			$scope.isUser = $scope.user.email == $scope.user.email;
+		});
+
 });

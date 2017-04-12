@@ -62,6 +62,11 @@ app.config(['$locationProvider', '$routeProvider',
     .when('/utilisateur/:id', {
       templateUrl: 'views/user-information.html',
       controller: 'UserInformationController',
+      resolve: {
+        firebaseUser: ["Auth", function(Auth) {
+          return Auth.$waitForSignIn();
+        }]
+      }
     })
     .otherwise({redirectTo:'/connexion'});
 
@@ -73,7 +78,7 @@ app.config(['$locationProvider', '$routeProvider',
 app.run(['$location', '$rootScope', 'firebaseService', function($location, $rootScope, firebaseService) {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-      $rootScope.currentUser = firebaseService.getUserByEmail(user.email);
+      $rootScope.currentUser = user;
       if ($location.path() === '/connexion') {
         $location.path('/patients');
       }
